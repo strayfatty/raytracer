@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tray.Core\Tray.Core.csproj" />
+  </ItemGroup>
+
 </Project>
