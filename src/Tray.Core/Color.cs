@@ -32,6 +32,20 @@ namespace Tray.Core
                 array[index + 2]);
         }
 
+        public static Color CopyFrom(byte[] array, int index)
+        {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+
+            if (index < 0 || (array.Length - index) < 3)
+                throw new ArgumentOutOfRangeException(nameof(index));
+
+            return new Color(
+                array[index] / 255.0f,
+                array[index + 1] / 255.0f,
+                array[index + 2] / 255.0f);
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Color))
@@ -67,6 +81,19 @@ namespace Tray.Core
             array[index] = this.R;
             array[index + 1] = this.G;
             array[index + 2] = this.B;
+        }
+
+        public void CopyTo(byte[] array, int index)
+        {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+
+            if (index < 0 || (array.Length - index) < 3)
+                throw new ArgumentOutOfRangeException(nameof(index));
+
+            array[index] = this.R.ClampToByte();
+            array[index + 1] = this.G.ClampToByte();
+            array[index + 2] = this.B.ClampToByte();
         }
 
         public static bool operator ==(Color left, Color right)

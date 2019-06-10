@@ -35,18 +35,17 @@ namespace Tray.Core.Tests
             Color.White.B.Should().Be(1);
         }
 
-
         [Fact]
-        public void CopyFrom_ArrayIsNull_ThrowsArgumentNullException()
+        public void CopyFromFloatArray_ArrayIsNull_ThrowsArgumentNullException()
         {
-            Action action = () => Color.CopyFrom(null, 0);
+            Action action = () => Color.CopyFrom((float[])null, 0);
 
             action.Should().Throw<ArgumentNullException>()
                 .Which.ParamName.Should().Be("array");
         }
 
         [Fact]
-        public void CopyFrom_IndexIsNegative_ThrowsArgumentOutOfRangeException()
+        public void CopyFromFloatArray_IndexIsNegative_ThrowsArgumentOutOfRangeException()
         {
             var array = new float[3];
             Action action = () => Color.CopyFrom(array, -1);
@@ -56,7 +55,7 @@ namespace Tray.Core.Tests
         }
 
         [Fact]
-        public void CopyFrom_IndexToLarge_ThrowsArgumentOutOfRangeException()
+        public void CopyFromFloatArray_IndexToLarge_ThrowsArgumentOutOfRangeException()
         {
             var array = new float[4];
             Action action = () => Color.CopyFrom(array, 2);
@@ -66,7 +65,7 @@ namespace Tray.Core.Tests
         }
 
         [Fact]
-        public void CopyFrom()
+        public void CopyFromFloatArray()
         {
             var array = new float[] { 0.0f, 1.0f, 2.0f, 3.0f };
 
@@ -77,7 +76,46 @@ namespace Tray.Core.Tests
             color.B.Should().Be(3);
         }
 
+        [Fact]
+        public void CopyFromByteArray_ArrayIsNull_ThrowsArgumentNullException()
+        {
+            Action action = () => Color.CopyFrom((byte[])null, 0);
 
+            action.Should().Throw<ArgumentNullException>()
+                .Which.ParamName.Should().Be("array");
+        }
+
+        [Fact]
+        public void CopyFromByteArray_IndexIsNegative_ThrowsArgumentOutOfRangeException()
+        {
+            var array = new float[3];
+            Action action = () => Color.CopyFrom(array, -1);
+
+            action.Should().Throw<ArgumentOutOfRangeException>()
+                .Which.ParamName.Should().Be("index");
+        }
+
+        [Fact]
+        public void CopyFromByteArray_IndexToLarge_ThrowsArgumentOutOfRangeException()
+        {
+            var array = new float[4];
+            Action action = () => Color.CopyFrom(array, 2);
+
+            action.Should().Throw<ArgumentOutOfRangeException>()
+                .Which.ParamName.Should().Be("index");
+        }
+
+        [Fact]
+        public void CopyFromByteArray()
+        {
+            var array = new byte[] { 10, 0, 128, 255 };
+
+            var color = Color.CopyFrom(array, 1);
+
+            color.R.Should().Be(0 / 255.0f);
+            color.G.Should().Be(128 / 255.0f);
+            color.B.Should().Be(255 / 255.0f);
+        }
 
         [Fact]
         public void Equals_Null_IsFalse()
@@ -119,16 +157,16 @@ namespace Tray.Core.Tests
         }
 
         [Fact]
-        public void CopyTo_ArrayIsNull_ThrowsArgumentNullException()
+        public void CopyToFloatArray_ArrayIsNull_ThrowsArgumentNullException()
         {
-            Action action = () => Color.White.CopyTo(null, 0);
+            Action action = () => Color.White.CopyTo((float[])null, 0);
 
             action.Should().Throw<ArgumentNullException>()
                 .Which.ParamName.Should().Be("array");
         }
 
         [Fact]
-        public void CopyTo_IndexIsNegative_ThrowsArgumentOutOfRangeException()
+        public void CopyToFloatArray_IndexIsNegative_ThrowsArgumentOutOfRangeException()
         {
             var array = new float[3];
             Action action = () => Color.White.CopyTo(array, -1);
@@ -138,7 +176,7 @@ namespace Tray.Core.Tests
         }
 
         [Fact]
-        public void CopyTo_IndexToLarge_ThrowsArgumentOutOfRangeException()
+        public void CopyToFloatArray_IndexToLarge_ThrowsArgumentOutOfRangeException()
         {
             var array = new float[4];
             Action action = () => Color.White.CopyTo(array, 2);
@@ -148,7 +186,7 @@ namespace Tray.Core.Tests
         }
 
         [Fact]
-        public void CopyTo()
+        public void CopyToFloatArray()
         {
             var array = new float[4];
             var color = new Color(1, 2, 3);
@@ -158,6 +196,48 @@ namespace Tray.Core.Tests
             array[1].Should().Be(1);
             array[2].Should().Be(2);
             array[3].Should().Be(3);
+        }
+
+        [Fact]
+        public void CopyToByteArray_ArrayIsNull_ThrowsArgumentNullException()
+        {
+            Action action = () => Color.White.CopyTo((byte[])null, 0);
+
+            action.Should().Throw<ArgumentNullException>()
+                .Which.ParamName.Should().Be("array");
+        }
+
+        [Fact]
+        public void CopyToByteArray_IndexIsNegative_ThrowsArgumentOutOfRangeException()
+        {
+            var array = new byte[3];
+            Action action = () => Color.White.CopyTo(array, -1);
+
+            action.Should().Throw<ArgumentOutOfRangeException>()
+                .Which.ParamName.Should().Be("index");
+        }
+
+        [Fact]
+        public void CopyToByteArray_IndexToLarge_ThrowsArgumentOutOfRangeException()
+        {
+            var array = new byte[4];
+            Action action = () => Color.White.CopyTo(array, 2);
+
+            action.Should().Throw<ArgumentOutOfRangeException>()
+                .Which.ParamName.Should().Be("index");
+        }
+
+        [Fact]
+        public void CopyToByteArray()
+        {
+            var array = new byte[4];
+            var color = new Color(-1.0f, 0.5f, 2.0f);
+
+            color.CopyTo(array, 1);
+
+            array[1].Should().Be(0);
+            array[2].Should().Be(128);
+            array[3].Should().Be(255);
         }
 
         [Theory]
