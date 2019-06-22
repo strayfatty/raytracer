@@ -47,7 +47,14 @@ namespace Tray.Application
                     return;
 
                 var index = (y * this.Width + x) * 4;
-                value.CopyTo(this.data, index);
+
+                var r = value.R.ClampToByte();
+                var g = value.G.ClampToByte();
+                var b = value.B.ClampToByte();
+
+                this.data[index] = b;
+                this.data[index + 1] = g;
+                this.data[index + 2] = r;
                 this.data[index + 3] = (byte)255;
             }
         }
@@ -65,9 +72,9 @@ namespace Tray.Application
             var b = color.B.ClampToByte();
             for (var i = 0; i < this.data.Length;)
             {
-                this.data[i++] = r;
-                this.data[i++] = g;
                 this.data[i++] = b;
+                this.data[i++] = g;
+                this.data[i++] = r;
                 this.data[i++] = 255;
             }
         }
