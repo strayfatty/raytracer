@@ -1,8 +1,10 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
+
 using ImGuiNET;
+
 using Tray.Application;
 using Tray.Core;
+
 using Veldrid;
 
 namespace Tray.Chapter02

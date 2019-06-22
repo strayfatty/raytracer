@@ -1,5 +1,6 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
+
+using Tray.Application;
 using Tray.Core;
 
 namespace Tray.Chapter02
@@ -8,17 +9,17 @@ namespace Tray.Chapter02
     {
         private readonly ICanvas canvas;
 
-        private Vector4 origin;
+        private Vector2 origin;
 
-        private Vector4 velocity;
+        private Vector2 velocity;
 
-        private Vector4 environment;
+        private Vector2 environment;
 
         private int stepCount;
 
-        private Vector4 currPos;
+        private Vector2 currPos;
 
-        private Vector4 currVel;
+        private Vector2 currVel;
 
         private int currStep;
 
@@ -35,9 +36,9 @@ namespace Tray.Chapter02
             float wind,
             int stepCount)
         {
-            this.origin = new Vector4(origin, 0, 1);
-            this.velocity = Vector4.Normalize(new Vector4(direction, 0, 0)) * velocity;
-            this.environment = new Vector4(wind, -gravity, 0.0f, 0.0f);
+            this.origin = origin;
+            this.velocity = Vector2.Normalize(direction) * velocity;
+            this.environment = new Vector2(wind, -gravity);
             this.stepCount = stepCount;
 
             this.Reset();
@@ -62,10 +63,7 @@ namespace Tray.Chapter02
                 this.currPos += this.currVel;
                 this.currVel += this.environment;
 
-                var x = (int)Math.Round(this.currPos.X, MidpointRounding.AwayFromZero);
-                var y = (int)Math.Round(this.currPos.Y, MidpointRounding.AwayFromZero);
-
-                this.canvas[x, this.canvas.Height - y] = Color.White;
+                this.canvas.SetColor(this.currPos, Color.White);
             }
 
             return true;
