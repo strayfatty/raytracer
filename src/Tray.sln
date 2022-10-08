@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tray.Core", "Tray.Core\Tray.Core.csproj", "{044AF5EA-1ED6-4E03-8649-1D07AF9EEB5C}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tray.Application", "Tray.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tray.Chapter02", "Tray.Chapter02\Tray.Chapter02.csproj", "{E5B3654B-6B9D-48A2-8E66-7029FB2C3A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tray.Chapter03", "Tray.Chapter03\Tray.Chapter03.csproj", "{2CB79B9A-5B7B-4552-BF8F-4E6251968039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tray.Chapter03", "Tray.Chapter03\Tray.Chapter03.csproj", "{2CB79B9A-5B7B-4552-BF8F-4E6251968039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tray", "Tray\Tray.csproj", "{7DEC2CEF-BBE1-4DD3-8AAF-84FE9F1FDCA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2CB79B9A-5B7B-4552-BF8F-4E6251968039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CB79B9A-5B7B-4552-BF8F-4E6251968039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB79B9A-5B7B-4552-BF8F-4E6251968039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEC2CEF-BBE1-4DD3-8AAF-84FE9F1FDCA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEC2CEF-BBE1-4DD3-8AAF-84FE9F1FDCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEC2CEF-BBE1-4DD3-8AAF-84FE9F1FDCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEC2CEF-BBE1-4DD3-8AAF-84FE9F1FDCA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
